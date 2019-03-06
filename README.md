@@ -2,24 +2,27 @@
 
 ## Dependencies
 
+- [babel](https://github.com/babel/babel)
 - [nodemon](https://nodemon.io/)
 
 
 ## Project structure
 ```
 .
-├── app.js
-├── bin
-│   └── www
-├── package.json
+├── src
+│   │──app.js
+│   │── bin
+│       └── www.js
+│   │── models
+│   ├── routes
+│       ├── index.js
+│       └── ...
 ├── public
-│   ├── images
-│   ├── javascripts
+│   ├── index.html
 │   └── stylesheets
 │       └── style.css
-├── routes
-│   ├── index.js
-│   └── users.js
+├── dist
+
 ```
 
 ## Setup directory for a new project
@@ -36,9 +39,14 @@ Install dependencies
 npm install
 ```
 
-## Running the server
+## Running the server in production mode
 
 ```
 npm start
+```
+
+## Running the server in dev mode
+```
+npm run nodemon
 ```
 
