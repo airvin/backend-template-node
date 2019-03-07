@@ -1,7 +1,7 @@
 # Backend Template with Node.js and Express
 
 ## Dependencies
-
+- [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 - [babel](https://github.com/babel/babel)
 - [nodemon](https://nodemon.io/)
 
@@ -47,6 +47,6 @@ npm start
 
 ## Running the server in dev mode
 ```
-npm run nodemon
+npm run watch
 ```
 
