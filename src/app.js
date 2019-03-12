@@ -16,14 +16,13 @@ mongoose.connect(mongoDB, { useNewUrlParser: true }, err => {
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-// Close the mongo connection on app 
-process.on('SIGINT', function() {
+// Close the mongo connection on kill app signal
+process.on('SIGINT', function () {
     console.log("Closing MongoDB connection...");
     mongoose.connection.close();
     console.log("MongoDB disconnected on app termination");
     process.exit(0);
 });
-
 
 const app = express()
 
@@ -32,6 +31,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../public')))
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "POST, PUT, PUSH, DELETE, GET, OPTIONS");
+    next();
+});
 
 app.use('/', indexRouter)
 

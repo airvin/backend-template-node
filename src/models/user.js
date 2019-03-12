@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 
 let UserSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    email: String,
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true }
 }, { timestamps: true })
 
-mongoose.model('User', UserSchema);
+export default mongoose.model('User', UserSchema)
